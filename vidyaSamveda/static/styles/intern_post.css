@@ -1,0 +1,111 @@
+/* General Body Styling */
+body {
+    margin: 0;
+    padding: 20px;
+    font-size: 15px;
+  }
+  
+  /* Form Container Styling */
+  form.intern_post {
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  /* Heading Styling */
+  h2 {
+    text-align: center;
+    color: #333333;
+    margin-bottom: 15px;
+    font-size: 40px;
+  }
+  
+  /* Label Styling */
+  label {
+    font-size: 25px;
+    font-weight: bold;
+    color: #555555;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Input Fields Styling */
+  input[type="text"],
+  input[type="number"],
+  input[type="date"] {
+    width: 50%;
+    padding: 5px;
+    margin-bottom: 15px;
+    border: 1px solid ;
+    border-radius: 4px;
+  }
+  
+  /* Radio Buttons and Checkboxes Styling */
+  input[type="radio"],
+  input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  .type,
+  .stipend {
+    margin-bottom: 15px;
+  }
+  
+  .type label,
+  .stipend label {
+    font-weight: normal;
+    margin-right: 10px;
+  }
+  
+  /* Responsibilites Text Input */
+  #resp {
+    width: 100%;
+    height: 200px; /* Multi-line input */
+    resize: vertical; /* Allow resizing vertically */
+  }
+  
+  /* Perks Section */
+  legend {
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+  }
+  
+  /* Additional Preferences Text Input */
+  #add {
+    width: 80%;
+    height: 100px; /* Multi-line input */
+    resize: vertical; /* Allow resizing vertically */
+  }
+  
+  /* Submit Button Styling */
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    form.intern_post {
+      padding: 15px;
+    }
+  
+    input[type="text"],
+    input[type="number"],
+    input[type="date"] {
+      font-size: 12px;
+    }
+  }

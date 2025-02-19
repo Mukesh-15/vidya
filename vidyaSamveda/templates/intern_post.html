@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vidya.com</title>
+        <link rel="stylesheet" href="{% static 'styles/common.css'%}">
+        <link rel="stylesheet" href="{% static 'styles/intern_post.css'%}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    </head>
+
+    <body>
+        <h2>Post an Internship</h2>
+            <form class="intern_post">
+                    <label="Title" id="title" for="title">Title of Internship</label>
+                    <input type="text" width="60px" id="title"><br><BR>
+
+                    <label="Skill" id="skill" for="skill">Skills Required </label>
+                    <input type="text" width="30px" id="skill"><br><br>
+
+                    <div class="type">
+                        <label="Type" id="type" for="type">Type of Work</label>
+                        <input type="radio" id="type1" name="type">Office
+                        <input type="radio" id="type2" name="type">Home
+                        <input type="radio" id="type3" name="type">Hybrid
+                    </div>
+                    <BR>
+
+                    <label="PT/FT" id="pt/ft" for="pt/ft">Part-Time/Full-Time</label>
+                    <input type="checkbox" id="pt/ft" name="pt/ft">Part Time
+                    <input type="checkbox" id="pt/ft" name="pt/ft">Full Time <br><br>
+
+                    <label="Openings" id="openings" for="openings">No of Openings </label>
+                    <input type="number" width="5px" id="openings"><br><BR>
+                    
+                    <label="Start_date" id="st_dt" for="st_dt">Internship start date </label>
+                    <input type="date" width="10px" id="st_dt"><br><br>
+
+                    <label="Duration" id="duration" for="duration">Duration </label>
+                    <input type="number" width="5px" id="duration"><br><br>
+
+                    <label="Responsibilities" id="resp" for="resp">Responsibilites given to Interns </label><br>
+                    <input type="text" id="resp"><br><br>
+
+                    <label="Stipend" id="stipend" for="stipend"><B>Stipend Details</B></label><br><br>
+                    <div class="dropdown">
+                        <input type="text" id="stipend">
+                        <div class="dropdown-content">
+                          <!-- Monetary Compensation -->
+                          <div class="category">
+                            <h3>Monetary Compensation</h3>
+                            <a href="#">Stipend</a>
+                            <a href="#">Hourly Wage</a>
+                            <a href="#">Performance-Based Pay</a>
+                            <a href="#">Commission</a>
+                          </div>
+                    
+                          <!-- Reimbursements & Allowances -->
+                          <div class="category">
+                            <h3>Reimbursements & Allowances</h3>
+                            <a href="#">Travel Allowance</a>
+                            <a href="#">Meal Allowance</a>
+                            <a href="#">Accommodation Support</a>
+                          </div>
+                    
+                          <!-- Non-Monetary Benefits -->
+                          <div class="category">
+                            <h3>Non-Monetary Benefits</h3>
+                            <a href="#">Letter of Recommendation</a>
+                            <a href="#">Internship Certificate</a>
+                            <a href="#">Flexible Work Hours</a>
+                            <a href="#">Job Offer</a>
+                          </div>
+                    
+                          <!-- Learning & Development -->
+                          <div class="category">
+                            <h3>Learning & Development</h3>
+                            <a href="#">Skill Development</a>
+                            <a href="#">Access to Tools/Software</a>
+                          </div>
+                    
+                          <!-- Incentives -->
+                          <div class="category">
+                            <h3>Incentives</h3>
+                            <a href="#">Incentives</a>
+                          </div>
+                        </div>
+                      </div>
+                        <br><br>
+                    </div> 
+                    <div class="Perks">
+                        <label="Perks" id="perk" for="perk">Perks</label><br>
+                        <legend>
+                            <input type="checkbox" id="perk">Letter of Recommendation
+                            <input type="checkbox" id="perk">Internship certification<br>
+                            <input type="checkbox" id="perk">Incentives
+                            <input type="checkbox" id="perk">Flexible work hours<br>
+                            <input type="checkbox" id="perk">Job Offer <br><br>
+                        </legend>
+                    </div>
+                    
+                    <label="Addl.pref" id="add" for="add">Additional Preferences</label>
+                    <input type="text" width="150px" height="150px" id="add"><br><br>
+
+                    <input type="submit" onclick="close">
+            </form>
+            <script>
+              function submitForm() {
+                const title = document.getElementById('title').value;
+                const skillsRequired = document.getElementById('skill').value;
+                const typeOfWork = document.querySelector('input[name="type"]:checked')?.value;
+                const partTimeFullTime = Array.from(document.querySelectorAll('input[name="pt/ft"]:checked')).map((cb) => cb.value);
+                const noOfOpenings = document.getElementById('openings').value;
+                const startDate = document.getElementById('st_dt').value;
+                const duration = document.getElementById('duration').value;
+                const responsibilities = document.getElementById('resp').value;
+                const stipendDetails = Array.from(document.querySelectorAll('.dropdown-content a')).filter((a) => a.selected).map((a) => a.textContent);
+                const perks = Array.from(document.querySelectorAll('input[id="perk"]:checked')).map((cb) => cb.value);
+                const additionalPreferences = document.getElementById('add').value;
+            
+                fetch('/post-internship', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    title,
+                    skillsRequired,
+                    typeOfWork,
+                    partTimeFullTime,
+                    noOfOpenings,
+                    startDate,
+                    duration,
+                    responsibilities,
+                    stipendDetails,
+                    perks,
+                    additionalPreferences,
+                  }),
+                })
+                  .then((response) => response.json())
+                  .then((data) => alert(data.message))
+                  .catch((error) => console.error('Error:', error));
+              }
+            </script>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+body{
+  margin: 100px; 
+  border-style: hidden;
+  align-content: center;
+  text-align: center;
+  background-color: rgba(119, 204, 221, 0.448);
+  background-position: left top;
+}
+form{
+  border-style:groove;
+  border-width: 2px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: relative;
+  margin-left: 15px;
+  text-align: left;
+  margin: 15px;
+  border-radius: 10px;
+}

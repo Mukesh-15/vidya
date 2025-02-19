@@ -1,0 +1,159 @@
+/* Base Styles */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: left;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    #industry{
+        width: 142%;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 5px;
+    }
+}
+
+/* Dropdown Button */
+.dropdown-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-button:hover {
+    background-color: #0056b3;
+}
+
+/* Dropdown Content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    max-height: 150px;
+    overflow-y:auto;
+    z-index: 1;
+}
+
+/* Dropdown Items */
+.dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    scrollbar-width: 1px;
+}
+
+/* Show Dropdown on Hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="number"] {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    input[type="submit"] {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    form {
+        padding: 10px;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="number"] {
+        font-size: 0.8rem;
+        padding: 6px;
+    }
+
+    input[type="submit"] {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+}

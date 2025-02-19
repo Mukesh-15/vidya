@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <title>Vidya.com</title>
+    <link rel="stylesheet" href="{% static 'styles/common.css'%}">
+        <link rel="stylesheet" href="{% static 'styles/recruit_regis.css'%}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <body>
+        <h3>Organisation SignUp</h3>
+            <form>
+              {% csrf_token %}
+                    <label id="name" for="name">Organisation Name </label>
+                    <input type="text" width="30px" id="name"><br><br>
+
+                    <label id="email" for="email">Email </label>
+                    <input type="text" width="30px" id="email"><br><br>
+
+                    <label id="mobileno" for="mobileno">Mobile  </label>
+                    <input type="tel" width="15px" id="mobileno"><br><br>
+                    
+                    <label id="industry" for="industry">Industry</label>
+                    <div class="dropdown">
+                        <input type="text" id="industry">
+                        <div class="dropdown-content">
+                          <a href="#">Agriculture</a>
+                          <a href="#">Mining & Quarrying</a>
+                          <a href="#">Manufacturing</a>
+                          <a href="#">Construction</a>
+                          <a href="#">Energy Production</a>
+                          <a href="#">Retail & Wholesale Trade</a>
+                          <a href="#">Healthcare & Social Assistance</a>
+                          <a href="#">Financial Services</a>
+                          <a href="#">Transportation & Logistics</a>
+                          <a href="#">Information Technology (IT)</a>
+                          <a href="#">Telecommunications</a>
+                          <a href="#">Real Estate</a>
+                          <a href="#">Professional Services</a>
+                          <a href="#">Media & Entertainment</a>
+                          <a href="#">Research & Development (R&D)</a>
+                          <a href="#">Government & Public Administration</a>
+                          <a href="#">Non-Profit & NGOs</a>
+                          <a href="#">Environmental & Sustainability</a>
+                          <a href="#">Pharmaceuticals & Biotechnology</a>
+                          <a href="#">Automotive & Aerospace</a>
+                          <a href="#">Insurance</a>
+                          <a href="#">Legal & Compliance</a>
+                        </div>
+                      </div>
+                    <br><br>
+
+                    <label id="business" for="business">Type of Business </label>
+                    <input type="text" width="30px" id="business"><br><br>
+
+                    
+                    <label id="size" for="size">Size of Organisation </label>
+                    <input type="number" width="10px" id="size"><br><br>
+
+                    <input type="submit" onclick="close">
+            </form>
+
+            <script>
+              function submitForm() {
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const mobile = document.getElementById('mobileno').value;
+                const industry = document.getElementById('industry').value;
+                const businessType = document.getElementById('business').value;
+                const size = document.getElementById('size').value;
+            
+                fetch('/organisation-signup', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ name, email, mobile, industry, businessType, size }),
+                })
+                  .then((response) => response.json())
+                  .then((data) => {
+                    alert(data.message);
+                    if (data.redirect) {
+                      window.location.href = data.redirect; // Redirect to index page
+                    }
+                  })
+                  .catch((error) => console.error('Error:', error));
+              }
+            </script>
+    </body>
+</html>
